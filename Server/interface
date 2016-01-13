@@ -1,0 +1,179 @@
+【plant-interface】
+
+所有json均返回status， status为1成功，为0表示失败。
+
+userSex 1为男性，0为女性
+userAccount，数字，11位，要求1开头
+userPhone，数字，11位，要求1开头
+userName，汉字、字母、数字，2至10位
+userPassword，数字、字母，6位以上
+userQq，数字，4位以上
+userWechat，数组、字母、减号、下划线，5位以上
+userHead，默认值：http://121.42.195.113/plant/images/default.png
+
+status：1，成功
+status：0，失败
+status：-1，网络错误
+status：2，其他错误，具体不同接口原因不同
+status：1001，userAccount不符合规范
+status：1002，userName不符合规范
+status：1003，userPassword不符合规范
+status：1004，userPhone不符合规范
+status：1005，userQq不符合规范
+status：1006，userWechat不符合规范
+
+【entity】
+	// User.class
+
+	private Integer userId;
+	private String userAccount;
+	private String userPassword;
+	private String userName;
+	private String userHead;
+	private Short userSex;
+	private String userPhone;
+	private String userQq;
+	private String userWechat;
+	private Timestamp userCreateTime;
+	private Set<Point> points = new HashSet<Point>(0);
+	private Set<Answer> answers = new HashSet<Answer>(0);
+	private Set<Question> questions = new HashSet<Question>(0);
+	private Set<Collection> collections = new HashSet<Collection>(0);
+	private Set<Privilege> privileges = new HashSet<Privilege>(0);
+
+	// Privilege.class
+	
+	private Integer privilegeId;
+	private User user;
+	private Integer userCoin;
+	private String userLevel;
+	private Timestamp userLastTime;
+
+	// Book.class
+	
+	private Integer bookId;
+	private User user;
+	private Integer typeId;
+	private Integer bookCoin;
+	private Short bookState;
+	private String bookLocation;
+	private Float bookLatitude;
+	private Float bookLongitude;
+	private String bookCover;
+	private String bookImages;
+	private String bookContent;
+	private Timestamp bookTime;
+	private String bookName;
+	private String bookAuthor;
+	private String bookPublishingCompany;
+	private Timestamp bookPublishingTime;
+	private String bookIsbn;
+	private Set comments = new HashSet(0);
+	private Set collections = new HashSet(0);
+
+
+	// Comment.class
+
+	private Integer commentId;
+	private User user;
+	private Book book;
+	private String commentContent;
+	private Timestamp commentTime;
+
+  	// Collection.class
+
+	private Integer collectionId;
+	private Book book;
+	private User user;
+	private Timestamp collectionTime;
+
+
+【登录接口】
+URL: http://121.42.195.113/plant/login.action
+Parameter: userAccount, userPassword
+
+Request Example:
+http://121.42.195.113/plant/login.action?userAccount=18819460136&userPassword=123456
+
+Response Example: 
+{
+  "status": 1,
+  "userId": 0,
+  "userAccount": "18819460136",
+  "userName": "18819460136",
+  "userHead": "http://121.42.195.113/plant/images/default.png",
+  "userSex": 1,
+  "userPhone": "18819460136",
+  "userCreateTime": "Nov 14, 2015 11:49:00 PM"
+}
+
+【注册接口】
+URL: http://121.42.195.113/plant/register.action
+Parameter: userAccount, userPassword
+
+Request Example:
+http://121.42.195.113/plant/register.action?userAccount=18819460136&userPassword=123456
+
+Response Example: 
+{
+  "status": 1
+}
+
+【添加书籍接口】
+URL: http://121.42.195.113/plant/add_book_action.action
+Parameter: userId, bookName, bookAuthor, bookIsbn, bookLatitude, bookLongitude, typeId, bookPublishingCompany
+
+Request Example:
+http://121.42.195.113/Plant/add_book_location.action?userId=1&bookName=%E6%88%91%E6%98%AF%E6%9C%88%E4%BA%AE&bookAuthor=%E9%82%93%E5%9B%BD%E9%9B%84&bookIsbn=100-100-100-100&bookLatitude=104.123456&bookLongitude=33.123456&typeId=1&bookPublishingCompany=%E4%B8%AD%E5%8D%8E%E4%B9%A6%E5%B1%80
+
+Note:经纬最多精确六位小数
+
+Response Example: 
+{
+  "status": 1
+}
+
+【查询书籍位置接口】
+URL: http://121.42.195.113/plant/get_book_location.action
+Parameter: keywords
+
+Note: keywords 可以是bookName，支持模糊查询
+
+Request Example:
+http://121.42.195.113/Plant/get_book_location.action?keywords=%E6%88%91%E6%98%AF%E5%A4%AA%E9%98%B3
+
+Response Example: 
+{
+  "count": "2",
+  "info": "OK",
+  "status": 1,
+  "datas": [
+    {
+      "_id": "2",
+      "_location": "104.394729,33.125698",
+      "_name": "我是太阳",
+      "_address": "",
+      "bookId": "",
+      "_createtime": "2016-01-13 16:03:27",
+      "_updatetime": "2016-01-13 16:03:27",
+      "_province": "甘肃省",
+      "_city": "陇南市",
+      "_district": "文县",
+      "_image": []
+    },
+    {
+      "_id": "3",
+      "_location": "104.394729,33.125698",
+      "_name": "我是太阳",
+      "_address": "",
+      "bookId": "1",
+      "_createtime": "2016-01-13 16:22:45",
+      "_updatetime": "2016-01-13 16:22:45",
+      "_province": "甘肃省",
+      "_city": "陇南市",
+      "_district": "文县",
+      "_image": []
+    }
+  ]
+}
+
