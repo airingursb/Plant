@@ -4,6 +4,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.plant.entity.Book;
 import com.plant.entity.Privilege;
 import com.plant.entity.User;
 import com.plant.util.HibernateSessionFactory;
@@ -47,6 +48,15 @@ public class UserDaoImpl implements UserDao {
 		}
 		HibernateSessionFactory.closeSession();
 		return -1;
+	}
+	
+	public User getUserByBookId(int bookId) {
+		Session session = HibernateSessionFactory.getSession();
+		String hql = "from Book as a where a.bookId='" + bookId + "'";
+		Query query = session.createQuery(hql);
+		Book book = (Book) query.uniqueResult();
+		User user = book.getUser();
+		return user;
 	}
 
 	@Override

@@ -26,7 +26,7 @@ import com.plant.util.HttpRequest;
 import com.plant.util.JsonResult;
 import com.plant.util.MapUtil;
 
-public class AddBookLocationAction extends ActionSupport implements Serializable, ModelDriven<Book> {
+public class AddBookInfoAction extends ActionSupport implements Serializable, ModelDriven<Book> {
 
 	
 	/**

@@ -120,11 +120,11 @@ Response Example:
 }
 
 【添加书籍接口】
-URL: http://121.42.195.113/plant/add_book_action.action
+URL: http://121.42.195.113/plant/add_book_info.action
 Parameter: userId, bookName, bookAuthor, bookIsbn, bookLatitude, bookLongitude, typeId, bookPublishingCompany
 
 Request Example:
-http://121.42.195.113/Plant/add_book_location.action?userId=1&bookName=%E6%88%91%E6%98%AF%E6%9C%88%E4%BA%AE&bookAuthor=%E9%82%93%E5%9B%BD%E9%9B%84&bookIsbn=100-100-100-100&bookLatitude=104.123456&bookLongitude=33.123456&typeId=1&bookPublishingCompany=%E4%B8%AD%E5%8D%8E%E4%B9%A6%E5%B1%80
+http://121.42.195.113/Plant/add_book_info.action?userId=1&bookName=%E6%88%91%E6%98%AF%E6%9C%88%E4%BA%AE&bookAuthor=%E9%82%93%E5%9B%BD%E9%9B%84&bookIsbn=100-100-100-100&bookLatitude=104.123456&bookLongitude=33.123456&typeId=1&bookPublishingCompany=%E4%B8%AD%E5%8D%8E%E4%B9%A6%E5%B1%80
 
 Note:经纬最多精确六位小数
 
@@ -177,3 +177,47 @@ Response Example:
   ]
 }
 
+【返回书籍列表接口】
+URL: http://121.42.195.113/plant/get_book_list.action
+Parameter: pageNum
+
+Request Example:
+http://121.42.195.113/plant/get_book_list.action?pageNum=1
+
+Note:经纬最多精确六位小数
+
+Response Example: 
+{
+  "status": 1,
+  "userId": 0,
+  "bookListData": [
+    {
+      "bookId": 2,
+      "bookLatitude": 105.333,
+      "bookLongitude": 33.3333,
+      "bookCover": "http://121.42.113.192/Plant/images/default.png",
+      "bookTime": "Jan 14, 2016 5:39:10 PM",
+      "bookName": "我是星星",
+      "bookAuthor": "Airing",
+      "bookPublishingCompany": "人民邮电出版社",
+      "bookPublishingTime": "Jan 14, 2015 5:39:10 PM",
+      "bookIsbn": "100-100-100-101",
+      "userId": 1,
+      "userName": "123456"
+    },
+    {
+      "bookId": 1,
+      "bookLatitude": 104.123,
+      "bookLongitude": 33.1235,
+      "bookCover": "http://121.42.113.192/Plant/images/default.png",
+      "bookTime": "Jan 13, 2016 5:39:10 PM",
+      "bookName": "我是太阳",
+      "bookAuthor": "邓国雄",
+      "bookPublishingCompany": "人民教育出版社",
+      "bookPublishingTime": "Jan 14, 2015 5:39:10 PM",
+      "bookIsbn": "100-100-100-100",
+      "userId": 1,
+      "userName": "123456"
+    }
+  ]
+}

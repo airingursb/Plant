@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 public class BookListData {
 	
+	private int bookId;
 	private String bookLocation;
 	private Float bookLatitude;
 	private Float bookLongitude;
@@ -16,6 +17,17 @@ public class BookListData {
 	private String bookPublishingCompany;
 	private Timestamp bookPublishingTime;
 	private String bookIsbn;
+	
+	private int userId;
+	private String userName;
+	private String userHead;
+	
+	public int getBookId() {
+		return bookId;
+	}
+	public void setBookId(int bookId) {
+		this.bookId = bookId;
+	}
 	public String getBookLocation() {
 		return bookLocation;
 	}
@@ -87,6 +99,24 @@ public class BookListData {
 	}
 	public void setBookIsbn(String bookIsbn) {
 		this.bookIsbn = bookIsbn;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getUserHead() {
+		return userHead;
+	}
+	public void setUserHead(String userHead) {
+		this.userHead = userHead;
 	}
 	
 	

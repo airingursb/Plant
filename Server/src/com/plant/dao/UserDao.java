@@ -8,6 +8,7 @@ public interface UserDao {
 	public User getUser(int userId);
 	public boolean getUserByAccount(String userAccount);
 	public int getUserIdByAccount(String userAccount);
+	public User getUserByBookId(int bookId);
 	
 	//保存用户
 	public void saveUser(User user);
