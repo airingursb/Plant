@@ -4,9 +4,35 @@
 	<package name="default" extends="struts-default">
 		<action name="login" class="com.plant.action.LoginAction">
 		</action>
-		<action name="add_book_location" class="com.plant.action.AddBookLocationAction">
+		<action name="add_book_info" class="com.plant.action.AddBookInfoAction">
 		</action>
 		<action name="get_book_location" class="com.plant.action.GetBookLocationAction">
 		</action>
+		<action name="get_book_list" class="com.plant.action.GetBookListAction">
+		</action>
+		<action name="upload_cover" class="com.plant.action.UploadCoverAction">
+			<interceptor-ref name="fileUpload">
+	 				<param name="maximumSize">10000000</param>
+	 				<param name="allowedTypes">
+	 					image/png,image/jpg
+	 				</param>
+	 		</interceptor-ref>
+	 		<interceptor-ref name="defaultStack"></interceptor-ref>
+			<param name="savePath">/images</param>
+			<result>/success.jsp</result>
+		</action>
+		<action name="main" class="com.plant.action.MainPageAction">
+		</action>
+		<action name="type" class="com.plant.action.TypePageAction">
+		</action>
+		<action name="get_book_info" class="com.plant.action.GetBookInfoAction">
+		</action>
+		<action name="get_user_info" class="com.plant.action.GetUserInfoAction">
+		</action>
+		<action name="buy" class="com.plant.action.BuyBookAction">
+		</action>
 	</package>
+	<constant name="struts.multipart.saveDir" value="/Users/airing/tmp/" />
+	<constant name="struts.multipart.maxSize" value="10000000" />
+	
 </struts>    

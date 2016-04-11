@@ -62,9 +62,19 @@ public class RegisterAction extends ActionSupport implements ModelDriven<User> {
 				Privilege privilege = new Privilege();
 				privilege.setUser(user);
 				privilege.setUserLastTime(ts);
+				privilege.setUserCoin(0);
+				privilege.setUserLevel("1");
 				userDao.savePrivilege(privilege);
 				jsonResult.setStatus(1);
-				System.out.println(gson.toJson(jsonResult));
+				jsonResult.setUserId(user.getUserId());
+				jsonResult.setUserAccount(user.getUserAccount());
+				jsonResult.setUserName(user.getUserName());
+				jsonResult.setUserHead(user.getUserHead());
+				jsonResult.setUserSex(user.getUserSex());
+				jsonResult.setUserPhone(user.getUserPhone());
+				jsonResult.setUserQq(user.getUserQq());
+				jsonResult.setUserWechat(user.getUserWechat());
+				jsonResult.setUserCreateTime(user.getUserCreateTime());
 				out.println(gson.toJson(jsonResult));
 				return null;
 			}else{

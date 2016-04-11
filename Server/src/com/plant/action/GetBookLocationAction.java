@@ -20,7 +20,6 @@ public class GetBookLocationAction extends ActionSupport implements Serializable
 	private static final long serialVersionUID = 2798316553412822227L;
 	
 	private String keywords;
-
 	
 	public String execute() throws IOException {
 		ActionContext ctx = ActionContext.getContext();

@@ -17,6 +17,7 @@ public class BookListData {
 	private String bookPublishingCompany;
 	private Timestamp bookPublishingTime;
 	private String bookIsbn;
+	private int bookCoin;
 	
 	private int userId;
 	private String userName;
@@ -117,6 +118,12 @@ public class BookListData {
 	}
 	public void setUserHead(String userHead) {
 		this.userHead = userHead;
+	}
+	public int getBookCoin() {
+		return bookCoin;
+	}
+	public void setBookCoin(int bookCoin) {
+		this.bookCoin = bookCoin;
 	}
 	
 	

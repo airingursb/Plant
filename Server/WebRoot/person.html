@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta charset="UTF-8">
+    <title>Plant</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Index -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+
+    <!-- Index -->
+    <link href="css/index.css" rel="stylesheet">
+
+    <!-- jquery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- jquery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- index.js -->
+    <script src="js/index.js"></script>
+</head>
+<body>
+<!-- navigation -->
+<div class="navbar">
+    <ul>
+        <a>
+            <li class="logo">
+                <h1> Plant </h1>
+            </li>
+        </a>
+        <a href="index.html">
+            <li>首页</li>
+        </a>
+        <a href="sort.html">
+            <li>书籍分类</li>
+        </a>
+        <a href="person.html">
+            <li>我的书籍</li>
+        </a>
+        <li class="login" id="unlogin">
+            <span><a data-toggle="modal" href="#login"> 登录</a></span>
+            <span>|</span>
+            <span><a data-toggle="modal" href="#register">注册</a></span>
+
+            <!-- login bar -->
+            <div id="login" class="modal fade in text-left" style="display: none; ">
+                <div class="modal-header">
+                    <a class="close" data-dismiss="modal">×</a>
+
+                    <h2>登录</h2>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="请输入用户账户" id="useraccount"
+                                   name="useraccount">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="password" placeholder="请输入用户密码" id="userpassword"
+                                   name="userpassword">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a href="javascript:js_login()" class="btn btn-success">登录</a>
+                    <a href="#" class="btn btn-success" data-dismiss="modal">取消</a>
+                </div>
+            </div>
+
+            <!-- register bar -->
+            <div id="register" class="modal fade in text-left register" style="display: none; ">
+                <div class="modal-header">
+                    <a class="close" data-dismiss="modal">×</a>
+
+                    <h2>注册</h2>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="请输入用户账户" id="account">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="password" placeholder="请输入用户密码" id="password">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="password" placeholder="请重复输入用户密码" id="confirmpassword">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="请输入用户名" id="name">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a href="javascript:js_register()" class="btn btn-success">注册</a>
+                    <a href="#" class="btn btn-success" data-dismiss="modal">取消</a>
+                </div>
+            </div>
+            <script src="js/bootstrap-modal.js"></script>
+        </li>
+        <li class="logined" id="logined">
+            <img class="person-head" src="" id="person-head">
+            <span><a href="person.html" id="person-name"></a></span>
+            <span>|</span>
+            <span><a href="javascript:js_quit()">退出</a></span>
+        </li>
+    </ul>
+</div>
+
+<!-- content -->
+<div class="container content">
+    <div class="row person-info">
+        <div class="col-md-3">
+            <div class="img-responsive">
+                <img src="" width="180" id="userhead"/>
+            </div>
+        </div>
+        <div class="col-md-5 information">
+            <h2 id="username"></h2>
+            <h4>Telephone：<span id="userphone"></span></h4>
+            <h4>Usercoins：<span id="usercoins"></span></h4>
+            <div><a data-toggle="modal" href="#gotbook" class="form-control btn btn-success">已购买书籍</a></div>
+            <div><a data-toggle="modal" href="#upload" class="form-control btn btn-danger">上传书籍</a></div>
+
+            <!-- gotbook bar -->
+            <div id="gotbook" class="modal fade in text-left buybook" style="display: none; ">
+                <div class="modal-header">
+                    <a class="close" data-dismiss="modal">×</a>
+                    <h2>已购买书籍</h2>
+                </div>
+                <div class="modal-body" id="buyBook">
+
+                </div>
+            </div>
+
+            <!-- upload bar -->
+            <div id="upload" class="modal fade in text-left upload" style="display: none; ">
+                <div class="modal-header">
+                    <a class="close" data-dismiss="modal">×</a>
+
+                    <h2>上传书籍</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="请输入书名" id="bookname">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="请输入作者" id="bookauthor">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="请输入出版社" id="bookpublishcompany">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" placeholder="请输入书本ISBN" id="bookisbn">
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="booktype">
+                            <option>白云区</option>
+                            <option>番禺区</option>
+                            <option>花都区</option>
+                            <option>萝岗区</option>
+                            <option>大学城</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" type="text" placeholder="请输入书本简介" id="bookcontent"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" placeholder="请输入售价" id="bookcoin">
+                    </div>
+                    <form method="post" action="http://192.168.20.102:8080/Plant/upload_cover.action" id="pic_upload"
+                          target="frameFile" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input id="lefile" name="upload" type="file" style="display:none">
+                            <a class="btn btn-success" onclick="$('input[id=lefile]').click();">Browse</a>
+                        </div>
+                    </form>
+
+                    <script type="text/javascript">
+                        $('input[id=lefile]').change(function () {
+                            $("#pic_upload").submit();
+                        });
+                    </script>
+                </div>
+                <div class="modal-footer">
+                    <a href="javascript:js_upload()" class="btn btn-success">上传</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+    <div class="row book-list">
+        <ul class="list-unstyled" id="bookList">
+
+        </ul>
+    </div>
+</div>
+
+<iframe id='frameFile' name='frameFile' style='display: none;'></iframe>
+<!-- footer -->
+<div class="footer container">
+    <div class="row">
+        <div class="col-md-6 col-md-push-2 copyright">
+            <p>Copy Right:Plant</p>
+
+            <p>Telephone:000 - 0000 0000</p>
+
+            <p>Address:Guangzhou University</p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        if (getCookie('userId')) {
+            get_person(getCookie('userId'), 1);
+        } else {
+            alert("请先登录");
+            window.location.href = "index.html";
+        }
+    });
+
+    function callback(url) {
+        setCookie('newbookurl',url);
+    }
+</script>
+</body>
+</html>

@@ -16,4 +16,6 @@ public interface UserDao {
 	
 	//相关业务
 	public boolean login(User user);
+	public Privilege getUserPrivilege(int userId);
+	public int getUserCoin(int userId);
 }

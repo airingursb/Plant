@@ -59,10 +59,13 @@ public class AddBookInfoAction extends ActionSupport implements Serializable, Mo
 		User user = userDao.getUser(userId);
 		book.setUser(user);
 		book.setTypeId(typeId);
-		book.setBookCoin(0);
 		book.setBookState(bookState);
-		book.setBookCover("http://121.42.113.192/Plant/images/default.png");
 		book.setBookTime(ts);
+		
+		String[] locations = {"安徽六安", "广东广州", "广东汕头", "北京", "上海", "香港"};
+		String location = locations[(int)(Math.random()*6)];
+		book.setBookLocation(location);
+		
 		bookDao.saveBook(book);
 		
 		map.set_name(book.getBookName());

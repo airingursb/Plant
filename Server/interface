@@ -9,7 +9,7 @@ userName，汉字、字母、数字，2至10位
 userPassword，数字、字母，6位以上
 userQq，数字，4位以上
 userWechat，数组、字母、减号、下划线，5位以上
-userHead，默认值：http://121.42.195.113/plant/images/default.png
+userHead，默认值：http://121.42.195.113/Plant/images/default.png
 
 status：1，成功
 status：0，失败
@@ -89,11 +89,11 @@ status：1006，userWechat不符合规范
 
 
 【登录接口】
-URL: http://121.42.195.113/plant/login.action
+URL: http://121.42.195.113/Plant/login.action
 Parameter: userAccount, userPassword
 
 Request Example:
-http://121.42.195.113/plant/login.action?userAccount=18819460136&userPassword=123456
+http://121.42.195.113/Plant/login.action?userAccount=18819460136&userPassword=123456
 
 Response Example: 
 {
@@ -101,18 +101,18 @@ Response Example:
   "userId": 0,
   "userAccount": "18819460136",
   "userName": "18819460136",
-  "userHead": "http://121.42.195.113/plant/images/default.png",
+  "userHead": "http://121.42.195.113/Plant/images/default.png",
   "userSex": 1,
   "userPhone": "18819460136",
   "userCreateTime": "Nov 14, 2015 11:49:00 PM"
 }
 
 【注册接口】
-URL: http://121.42.195.113/plant/register.action
+URL: http://121.42.195.113/Plant/register.action
 Parameter: userAccount, userPassword
 
 Request Example:
-http://121.42.195.113/plant/register.action?userAccount=18819460136&userPassword=123456
+http://121.42.195.113/Plant/register.action?userAccount=18819460136&userPassword=123456
 
 Response Example: 
 {
@@ -120,7 +120,7 @@ Response Example:
 }
 
 【添加书籍接口】
-URL: http://121.42.195.113/plant/add_book_info.action
+URL: http://121.42.195.113/Plant/add_book_info.action
 Parameter: userId, bookName, bookAuthor, bookIsbn, bookLatitude, bookLongitude, typeId, bookPublishingCompany
 
 Request Example:
@@ -134,7 +134,7 @@ Response Example:
 }
 
 【查询书籍位置接口】
-URL: http://121.42.195.113/plant/get_book_location.action
+URL: http://121.42.195.113/Plant/get_book_location.action
 Parameter: keywords
 
 Note: keywords 可以是bookName，支持模糊查询
@@ -178,11 +178,11 @@ Response Example:
 }
 
 【返回书籍列表接口】
-URL: http://121.42.195.113/plant/get_book_list.action
+URL: http://121.42.195.113/Plant/get_book_list.action
 Parameter: pageNum
 
 Request Example:
-http://121.42.195.113/plant/get_book_list.action?pageNum=1
+http://121.42.195.113/Plant/get_book_list.action?pageNum=1
 
 Note:经纬最多精确六位小数
 
@@ -195,7 +195,7 @@ Response Example:
       "bookId": 2,
       "bookLatitude": 105.333,
       "bookLongitude": 33.3333,
-      "bookCover": "http://121.42.113.192/Plant/images/default.png",
+      "bookCover": "http://121.42.195.113/Plant/images/default.png",
       "bookTime": "Jan 14, 2016 5:39:10 PM",
       "bookName": "我是星星",
       "bookAuthor": "Airing",
@@ -209,7 +209,7 @@ Response Example:
       "bookId": 1,
       "bookLatitude": 104.123,
       "bookLongitude": 33.1235,
-      "bookCover": "http://121.42.113.192/Plant/images/default.png",
+      "bookCover": "http://121.42.195.113/Plant/images/default.png",
       "bookTime": "Jan 13, 2016 5:39:10 PM",
       "bookName": "我是太阳",
       "bookAuthor": "邓国雄",

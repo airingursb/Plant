@@ -77,8 +77,18 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void savePrivilege(Privilege privilege) {
-		// TODO Auto-generated method stub
-
+		Session session = HibernateSessionFactory.getSession();
+		try{
+			transaction = session.beginTransaction();
+			session.save(privilege);
+			transaction.commit();
+		}catch(Exception e){
+			transaction.rollback();
+			System.out.println("savePrivilege Failed!");
+			e.printStackTrace();
+		}finally{
+			HibernateSessionFactory.closeSession();
+		}	
 	}
 
 	@Override
@@ -105,5 +115,26 @@ public class UserDaoImpl implements UserDao {
 		}
 		return false;
 	}
+
+	@Override
+	public int getUserCoin(int userId) {
+		Session session = HibernateSessionFactory.getSession();
+		String hql = "from Privilege as a where a.user.userId='" + userId + "'";
+		Query query = session.createQuery(hql);
+		Privilege privilege = (Privilege) query.uniqueResult();
+		return privilege.getUserCoin();
+	}
+
+	@Override
+	public Privilege getUserPrivilege(int userId) {
+		Session session = HibernateSessionFactory.getSession();
+		String hql = "from Privilege as a where a.user.userId='" + userId + "'";
+		Query query = session.createQuery(hql);
+		Privilege privilege = (Privilege) query.uniqueResult();
+		return privilege;
+	}
+	
+	
+	
 
 }

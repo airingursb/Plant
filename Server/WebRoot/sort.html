@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta charset="UTF-8">
+    <title>Plant</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Index -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+
+    <!-- Index -->
+    <link href="css/index.css" rel="stylesheet">
+
+    <!-- jquery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- index.js -->
+    <script src="js/index.js"></script>
+</head>
+<body>
+<!-- navigation -->
+<div class="navbar">
+    <ul>
+        <a>
+            <li class="logo">
+                <h1> Plant </h1>
+            </li>
+        </a>
+        <a href="index.html">
+            <li>首页</li>
+        </a>
+        <a href="sort.html">
+            <li>书籍分类</li>
+        </a>
+        <a href="person.html">
+            <li>我的书籍</li>
+        </a>
+        <li class="login" id="unlogin">
+            <span><a data-toggle="modal" href="#login"> 登录</a></span>
+            <span>|</span>
+            <span><a data-toggle="modal" href="#register">注册</a></span>
+
+            <!-- login bar -->
+            <div id="login" class="modal fade in text-left" style="display: none; ">
+                <div class="modal-header">
+                    <a class="close" data-dismiss="modal">×</a>
+
+                    <h2>登录</h2>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="请输入用户账户" id="useraccount" name="useraccount">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="password" placeholder="请输入用户密码" id="userpassword" name="userpassword">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a href="javascript:js_login()" class="btn btn-success">登录</a>
+                    <a href="#" class="btn btn-success" data-dismiss="modal">取消</a>
+                </div>
+            </div>
+
+            <!-- register bar -->
+            <div id="register" class="modal fade in text-left register" style="display: none; ">
+                <div class="modal-header">
+                    <a class="close" data-dismiss="modal">×</a>
+
+                    <h2>注册</h2>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="请输入用户账户" id="account">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="password" placeholder="请输入用户密码" id="password">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="password" placeholder="请重复输入用户密码" id="confirmpassword">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="请输入用户名" id="name">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a href="javascript:js_register()" class="btn btn-success">注册</a>
+                    <a href="#" class="btn btn-success" data-dismiss="modal">取消</a>
+                </div>
+            </div>
+            <script src="js/bootstrap-modal.js"></script>
+        </li>
+        <li class="logined" id="logined">
+            <img class="person-head" src="" id="person-head">
+            <span><a href="person.html" id="person-name"></a></span>
+            <span>|</span>
+            <span><a href="javascript:js_quit()">退出</a></span>
+        </li>
+    </ul>
+</div>
+
+<!-- content -->
+<div class="container content">
+    <!-- sort -->
+    <div class="row sort">
+        <ul class="list-inline">
+            <li>地区：</li>
+            <li><a href="javascript:type_book(1)">白云区</a></li>
+            <li><a href="javascript:type_book(2)">番禺区</a></li>
+            <li><a href="javascript:type_book(3)">花都区</a></li>
+            <li><a href="javascript:type_book(4)">萝岗区</a></li>
+            <li><a href="javascript:type_book(5)">大学城</a></li>
+        </ul>
+    </div>
+
+    <!-- book list -->
+    <div class="row book-list">
+        <ul class="list-unstyled" id="bookList">
+
+        </ul>
+    </div>
+</div>
+
+<!-- footer -->
+<div class="footer container">
+    <div class="row">
+        <div class="col-md-6 col-md-push-2 copyright">
+            <p>Copy Right:Plant</p>
+
+            <p>Telephone:000 - 0000 0000</p>
+
+            <p>Address:Guangzhou University</p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        setCookie('typeId',0);
+        list_book(0,1);
+    });
+</script>
+</body>
+</html>

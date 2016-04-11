@@ -17,8 +17,8 @@ public class BookDaoImpl implements BookDao {
 	
 	@Override
 	public Book getBook(int bookId) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = HibernateSessionFactory.getSession();
+		return (Book)session.load(Book.class, bookId); 
 	}
 
 	@Override
@@ -54,8 +54,8 @@ public class BookDaoImpl implements BookDao {
 		String hql = "from Book";
         Session session = HibernateSessionFactory.getSession();
         Query query = session.createQuery(hql);
-        query.setFirstResult((pageNum - 1) * 5);
-        query.setMaxResults(5);
+        query.setFirstResult((pageNum - 1) * 10);
+        query.setMaxResults(10);
         @SuppressWarnings("rawtypes")
 		List list = query.list();
 		Set<Book> allBook = new HashSet<Book>();
@@ -63,8 +63,41 @@ public class BookDaoImpl implements BookDao {
         	Book book = (Book) list.get(i);  
             allBook.add(book);     
         }   
-        HibernateSessionFactory.closeSession();
+		return allBook;
+	}
+	
+	@Override
+	public Set<Book> getBooksByTypeId(int typeId, int pageNum) {
+		String hql = "from Book as a where a.typeId='" + typeId + "'";
+        Session session = HibernateSessionFactory.getSession();
+        Query query = session.createQuery(hql);
+        query.setFirstResult((pageNum - 1) * 10);
+        query.setMaxResults(10);
+        @SuppressWarnings("rawtypes")
+		List list = query.list();
+		Set<Book> allBook = new HashSet<Book>();
+        for(int i = 0; i < list.size(); i++){  
+        	Book book = (Book) list.get(i);  
+            allBook.add(book);     
+        }   
 		return allBook;
 	}
 
+	@Override
+	public Set<Book> getBooksByUserId(int userId, int pageNum) {
+		String hql = "from Book as a where a.user.userId='" + userId + "'";
+        Session session = HibernateSessionFactory.getSession();
+        Query query = session.createQuery(hql);
+        query.setFirstResult((pageNum - 1) * 10);
+        query.setMaxResults(10);
+        @SuppressWarnings("rawtypes")
+		List list = query.list();
+		Set<Book> allBook = new HashSet<Book>();
+        for(int i = 0; i < list.size(); i++){  
+        	Book book = (Book) list.get(i);  
+            allBook.add(book);     
+        }   
+		return allBook;
+	}
+	
 }

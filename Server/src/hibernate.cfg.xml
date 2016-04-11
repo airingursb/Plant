@@ -9,17 +9,12 @@ airingursb.mysql.rds.aliyuncs.com
 <hibernate-configuration>
 
 <session-factory>
-	<property name="dialect">
-		org.hibernate.dialect.MySQLDialect
-	</property>
-	<property name="connection.url">
-		jdbc:mysql://airingursb.mysql.rds.aliyuncs.com:3306/plant?useUnicode=true&amp;characterEncoding=UTF-8
-	</property>
-	<property name="connection.username">plant</property>
-	<property name="connection.driver_class">
-		com.mysql.jdbc.Driver
-	</property>
-	<property name="connection.password">1123581321</property>
+	<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+	<property name="connection.url">jdbc:mysql://localhost:3306/plant?useUnicode=true&amp;amp;amp;characterEncoding=UTF-8</property>
+	<property name="connection.username">root</property>
+	<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+	<property name="connection.password"></property>
+	<property name="myeclipse.connection.profile">localhost</property>
 	<mapping resource="com/plant/entity/Book.hbm.xml" />
 	<mapping resource="com/plant/entity/Comment.hbm.xml" />
 	<mapping resource="com/plant/entity/Collection.hbm.xml" />
